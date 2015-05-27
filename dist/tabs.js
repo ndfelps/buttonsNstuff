@@ -8,7 +8,7 @@ function start() {
 	}
 	$targetSec.show();
 
-	$('nav = a[href="#' + $targetSec.attr('id')+'"]').addClass('active');
+	$('nav a[href="#' + $targetSec.attr('id')+'"]').addClass('active');
 
 	function tabOver(e) {
 		var $target = $(e.target);
