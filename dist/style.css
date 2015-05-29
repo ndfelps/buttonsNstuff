@@ -16,3 +16,8 @@ section span {
 	font-size: 10px;
 	font-style: italic;
 }
+#username-error {
+	color: red;
+	font-size: 10px;
+	font-style: italic;
+}

@@ -8,12 +8,18 @@ function start() {
 	var $website = $('#website');
 	var $name = $('#name');
 	var $message = $('#message');
+	var $login = $('#login');
+	var $username = $('#username');
+	var $pw = $('#password');
 	var done = false;
 	var likesCounter = 0;
 
 	$loading.on('click', load);
 	$likes.on('click', liked);
 	$contact.on('click', contactCheck);
+	$login.on('click', validLogin);
+	$username.keyup(validLoginPush);
+	$pw.keyup(validLoginPush);
 
 	function load1() {
 		$loading.html("Loading.");
@@ -89,12 +95,12 @@ function start() {
 			$('#email-error').html("");
 		}
 		var httpPresent = false;
-		var wDotCom = false;
+		var dotCom = false;
 
 		if ($website.val().substring($website.val().length-4) === ".com") {
-			wDotCom = true;
+			dotCom = true;
 		}
-		if (wDotCom === false) {
+		if (dotCom === false && httpPresent === false) {
 			$('#website-error').html("*Please insert a valid website");
 		} else {
 			$('#website-error').html("");
@@ -102,10 +108,51 @@ function start() {
 		if ($website.val().substring(0, 7) === "http://") {
 			httpPresent = true;
 		}
-		if (httpPresent === false) {
-			$('#website-error').html("*Please insert a valid website");
+		// if (httpPresent === false) {
+		// 	$('#website-error').html("*Please insert a valid website");
+		// } else {
+		// 	$('#website-error').html("");
+		// }
+	}
+	function revert() {
+		$login.html("Sign In");
+	}
+	function validLogin() {
+		if($username.val() === "aaron@theironyard.com" && $pw.val() === "password123") {
+			$login.html("Login Successful");
+			// setTimeout(1000, revert());
+			$('#username-error').html("");
+		} else if ($username.val() === "admin@google.com" && $pw.val() === "pandas") {
+			$login.html("Login Successful");
+			// setTimeout(1000, revert());
+			$('#username-error').html("");
+		} else if ($username.val() === "ndfelps@gmail.com" && $pw.val() === "honeycrisp") {
+			$login.html("Login Successful");
+			// setTimeout(1000, revert());
+			$('#username-error').html("");
 		} else {
-			$('#website-error').html("");
+			$('#username-error').html("*Your username or password is incorrect")
+		}
+	}
+
+	function validLoginPush() {
+		console.log("???");
+		if (event.keyCode === 13) {
+			if($username.val() === "aaron@theironyard.com" && $pw.val() === "password123") {
+				$login.html("Login Successful");
+				// setTimeout(1000, revert());
+				$('#username-error').html("");
+			} else if ($username.val() === "admin@google.com" && $pw.val() === "pandas") {
+				$login.html("Login Successful");
+				// setTimeout(1000, revert());
+				$('#username-error').html("");
+			} else if ($username.val() === "ndfelps@gmail.com" && $pw.val() === "honeycrisp") {
+				$login.html("Login Successful");
+				// setTimeout(1000, revert());
+				$('#username-error').html("");
+			} else {
+				$('#username-error').html("*Your username or password is incorrect")
+			}
 		}
 	}
 }
