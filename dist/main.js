@@ -17,6 +17,10 @@ function start() {
 	$loading.on('click', load);
 	$likes.on('click', liked);
 	$contact.on('click', contactCheck);
+	$email.keyup(contactCheckPush);
+	$website.keyup(contactCheckPush);
+	$name.keyup(contactCheckPush);
+	$message.keyup(contactCheckPush);
 	$login.on('click', validLogin);
 	$username.keyup(validLoginPush);
 	$pw.keyup(validLoginPush);
@@ -68,7 +72,6 @@ function start() {
 		}
 	}
 	function contactCheck(e) {
-		console.log('??')
 		if ($name.val() === "") {
 			$('#name-error').html("*Please insert a valid name");
 			console.log('why');
@@ -113,6 +116,54 @@ function start() {
 		// } else {
 		// 	$('#website-error').html("");
 		// }
+	}
+	function contactCheckPush(e) {
+		if (event.keyCode === 13) {
+			if ($name.val() === "") {
+				$('#name-error').html("*Please insert a valid name");
+				console.log('why');
+			} else {
+				$('#name-error').html("");
+			}
+			var atSym = false;
+			var eDotCom = false;
+			var e;
+			if ('@' in $email.val().split()) {
+				atSym = true;
+			}
+			if (atSym === false) {
+				$('#email-error').html("*Please insert a valid email address");
+			} else {
+				$('#email-error').html("");
+			}
+			if ($email.val().substring($email.val().length-4) === ".com") {
+				eDotCom = true;
+			}
+			if (eDotCom === false) {
+				$('#email-error').html("*Please insert a valid email address");
+			} else {
+				$('#email-error').html("");
+			}
+			var httpPresent = false;
+			var dotCom = false;
+
+			if ($website.val().substring($website.val().length-4) === ".com") {
+				dotCom = true;
+			}
+			if (dotCom === false && httpPresent === false) {
+				$('#website-error').html("*Please insert a valid website");
+			} else {
+				$('#website-error').html("");
+			}
+			if ($website.val().substring(0, 7) === "http://") {
+				httpPresent = true;
+			}
+			// if (httpPresent === false) {
+			// 	$('#website-error').html("*Please insert a valid website");
+			// } else {
+			// 	$('#website-error').html("");
+			// }
+		}
 	}
 	function revert() {
 		$login.html("Sign In");
