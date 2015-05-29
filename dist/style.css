@@ -11,3 +11,8 @@ main section {
 .active {
 	background-color: gray;
 }
+section span {
+	color: red;
+	font-size: 10px;
+	font-style: italic;
+}
