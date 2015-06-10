@@ -111,11 +111,11 @@ function start() {
 		if ($website.val().substring(0, 7) === "http://") {
 			httpPresent = true;
 		}
-		// if (httpPresent === false) {
-		// 	$('#website-error').html("*Please insert a valid website");
-		// } else {
-		// 	$('#website-error').html("");
-		// }
+		if ($('#website-error').html() === "" && $('#email-error').html() === "" && $('#name-error').html() === "") {
+			console.log('??');
+			$('.contact-box').hide();
+			$('#success').show();
+		}
 	}
 	function contactCheckPush(e) {
 		if (event.keyCode === 13) {
@@ -158,6 +158,11 @@ function start() {
 			if ($website.val().substring(0, 7) === "http://") {
 				httpPresent = true;
 			}
+			if ($('#website-error').html() === "" && $('#email-error').html() === "" && $('#name-error').html() === "") {
+				console.log('??');
+				$('.contact-box').hide();
+				$('#success').show();
+			}
 			// if (httpPresent === false) {
 			// 	$('#website-error').html("*Please insert a valid website");
 			// } else {
@@ -184,6 +189,9 @@ function start() {
 		} else {
 			$('#username-error').html("*Your username or password is incorrect")
 		}
+		if($('#username-error').html() === "") {
+			window.location.replace('http://theironyard.com/')
+		}
 	}
 
 	function validLoginPush() {
@@ -204,6 +212,10 @@ function start() {
 			} else {
 				$('#username-error').html("*Your username or password is incorrect")
 			}
+			if($('#username-error').html() === "") {
+				window.location.replace('http://theironyard.com/')
+			}
 		}
+		
 	}
 }

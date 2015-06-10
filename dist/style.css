@@ -21,3 +21,13 @@ section span {
 	font-size: 10px;
 	font-style: italic;
 }
+#success {
+	display: none;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 5px;
+	background-color: lightgrey;
+	margin-top: 30px;
+	text-align: center;
+	width: 100px;
+}
